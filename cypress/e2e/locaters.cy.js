@@ -1,4 +1,6 @@
 /// <reference types="cypress" />
+import * as child_process from "child_process";
+
 describe("find or get elements by using different locators ", () => {
 
     beforeEach(() => {
@@ -30,11 +32,21 @@ describe("find or get elements by using different locators ", () => {
         // ı want to use text : no xpath in cypress but we need to install with different aproach
         cy.get('button').should('contain','Login').click();
 
+        it('Check finding elements by traveling through DOM', function () {
+            //travel to find login btn: locate username box
+            cy.get('input[name="username"]').parents('form')
+                .find('button').should('contain','Login').click();
+        });
 
-
-
-
-
-
+        it.only('Check Different Type of assertion', function () {
+            //cypress itself bundles assertions provided by Chai , sinon and JQuery libraries
+            cy.get('#wooden_spoon').should('contain','Login')
+                .and('have.class','btn btn-primary');
+            //expect assertion
+            cy.get('#wooden_spoon').then((buttonElement)=>{
+                expect(buttonElement).to.have.text("Login");
+                expect(buttonElement).to.have.class("btn btn-primary")
+            })
+        });
     })
 })
