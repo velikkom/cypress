@@ -8,7 +8,6 @@ describe("find or get elements by using different locators ", () => {
     })
 
 
-
     //open cypress|set ".only"
     it('Check different locater strategies', () => {
         //by css locator
@@ -19,6 +18,23 @@ describe("find or get elements by using different locators ", () => {
             expect(list).to.have.length(2);
             expect(item).to.have.attr("type");
         })
+        // by attribute name
+        cy.get('[type]');
+
+        //by class attribute value
+        cy.get('.btn.btn-primary');
+
+        //by id
+        cy.get('#wooden_spoon');
+
+        // ı want to use text : no xpath in cypress but we need to install with different aproach
+        cy.get('button').should('contain','Login').click();
+
+
+
+
+
+
 
     })
 })
