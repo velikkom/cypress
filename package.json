@@ -12,7 +12,8 @@
   "author": "veli",
   "license": "ISC",
   "dependencies": {
-    "cypress": "^12.11.0"
+    "cypress": "^12.11.0",
+    "cypress-file-upload": "^5.0.8"
   },
   "devDependencies": {
     "@cypress/xpath": "^2.0.3",

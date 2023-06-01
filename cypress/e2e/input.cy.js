@@ -28,12 +28,13 @@ describe('Input Forms Tests', () => {
       .find('[type=radio]')
       .then((radio) => {
         // get all radio buttons, select the first one and verify that it is checked
-        cy.wrap(radio).first().check().should('be.checked'); // cypres works in a chainable functions structure
+        cy.wrap(radio).first().check().should('be.checked'); // cypress works in a chainable functions structure
         /**
-         * radio : is Jquery element, cy.wrap(radio) : turns it into Cypress Object so that I can use cypress functions
+         * radio : is Jquery element,
+         * cy.wrap(radio) : turns it into Cypress Object so that I can use cypress functions
          * first() : selects first element
          * check() : checks it out
-         * should(): verifes whatever I provide as parameter 'be.checked'
+         * should(): verifies whatever I provide as parameter 'be.checked'
          */
         // get all radio buttons, select the second one and verify that it is checked and confirmation label is visible
         cy.wrap(radio).eq(1).check().should('be.checked');
@@ -42,12 +43,43 @@ describe('Input Forms Tests', () => {
         cy.wrap(radio).eq(2).should('not.be.checked');
       });
   });
-  it('Check different checkbox actions', () => {
+  it.skip('Check different checkbox actions', () => {
     // get all chechboxes, select JAVA and verify
     cy.get('[type="checkbox"]').then((checkbox) => {
       cy.wrap(checkbox).eq(1).check().should('be.checked');
       // uncheck JAVA
       cy.wrap(checkbox).eq(1).uncheck().should('not.be.checked');
+    });
+  });
+  it.skip('Check different checkbox actions', () => {
+    // get all check boxes and check Java and verify
+    cy.get('[type="checkbox"]').then((checkbox) => {
+      cy.wrap(checkbox).eq(1).check().should('be.visible');
+      // unchecked Java
+      cy.wrap(checkbox).eq(1).uncheck().should('not.be.checked');
+      // Verify third one has a value and then check
+      cy.wrap(checkbox).eq(2).should('have.value', 'javascript').check().should('be.checked');
+    });
+  });
+  it.skip('Check selection of a choice from select dropdown', () => {
+    cy.get('select[name="job_title"]').select('SDET');
+    // assert that dropdown has correct text
+    cy.get('select[name="job_title"]').contains('SDET');
+  });
+  it('Check selection of all select dropdown options', () => {
+    // we will provide our test data through fixtures folder as Json object
+    cy.fixture('departments').then((departments) => {
+      // get all options in the menu, iterate through these options one by one
+      cy.get('select[name="department"]>option').each((option, index) => {
+        const optionText = option.text();
+        // console.log(optionText);
+        // console.log(index);
+        // cy.log(departments[index])
+        cy.get('select[name="department"]')
+          .select(optionText)
+          .should('have.value', option.val())
+          .contains(departments[index]);
+      });
     });
   });
 });
