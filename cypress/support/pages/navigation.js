@@ -2,7 +2,7 @@ import { negate } from "cypress/types/lodash";
 
 export class NavigateTo{
     loginPage(){
-        cy.visit(Cypress.env('login'));
+        cy.visit(Cypress.env('login'));//takes the parameter of defined in the parenthesis
 
     }
 }
