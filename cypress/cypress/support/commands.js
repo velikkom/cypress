@@ -23,13 +23,3 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
-
-/// <reference types="Cypress" />
-import 'cypress-file-upload';
-
-
-Cypress.Commands.add('textExits',(Text)=>{
-  cy.contains(Text).should('exist');
-})
-//textExist is the command name when we are calling this function from another tet class
-//cy.textExist('parameter')
