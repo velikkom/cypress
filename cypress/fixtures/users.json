@@ -228,5 +228,19 @@
       "catchPhrase": "Centralized empowering task-force",
       "bs": "target end-to-end models"
     }
+  },
+  {
+    "user1":{
+      "firstName" : "Harvey",
+      "lastName":"Specter",
+      "age" : "40",
+      "userEmail" : "specter@example.com",
+      "salary": "70000",
+      "department" : "legal"
+    },
+    "user2": {
+      "username": "tomsmith",
+      "password": "SuperSecretPassword"
+    }
   }
 ]
