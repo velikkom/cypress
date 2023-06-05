@@ -28,7 +28,7 @@
 import 'cypress-file-upload';
 
 
-Cypress.Commands.add('textExits',(Text)=>{
+Cypress.Commands.add('textExist',(Text)=>{
   cy.contains(Text).should('exist');
 })
 //textExist is the command name when we are calling this function from another tet class

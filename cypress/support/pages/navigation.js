@@ -1,4 +1,3 @@
-import { negate } from "cypress/types/lodash";
 
 export class NavigateTo{
     loginPage(){
@@ -6,4 +5,4 @@ export class NavigateTo{
 
     }
 }
-export const NavigateTo = new NavigateTo();
+export const navigateTo = new NavigateTo();
