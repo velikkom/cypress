@@ -1,4 +1,4 @@
-name: Cydeo Cypress Tests
+name: cypress
 
 on:
     schedule:
