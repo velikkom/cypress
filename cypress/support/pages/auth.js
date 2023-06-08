@@ -24,6 +24,9 @@ class Locators {//how do we apply findBy annotation of Selenium with Cypress
   get passWord() {
     return cy.get("[name=\"password\"]", { timeout: 5000 });
   }
+  get submit(){
+    return cy.get('#wooden_spoon');
+  }
 
 }
 const locators = new Locators();
